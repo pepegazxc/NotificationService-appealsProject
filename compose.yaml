@@ -1,0 +1,11 @@
+services:
+  kakfa:
+    build: .
+    networks:
+      - kafka-common-net
+    environment:
+      - KAFKA_BROKER=kafka:9092
+
+networks:
+  kafka-network:
+    external: true
