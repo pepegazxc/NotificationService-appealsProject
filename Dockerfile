@@ -1,9 +1,9 @@
 FROM eclipse-temurin:21-jdk
 
-WORKDIR /norification-service
+WORKDIR /notification-service
 
-COPY target/norification-service norification-service.jar
+COPY target/notification-service notification-service.jar
 
 EXPOSE 8083
 
-ENTRYPOINT ["java" , "-jar", "norification-service.jar"]
+ENTRYPOINT ["java" , "-jar", "notification-service.jar"]
