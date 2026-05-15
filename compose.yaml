@@ -1,8 +1,9 @@
 services:
-  kakfa:
+  notification-service:
     build: .
+    restart: always
     networks:
-      - kafka-common-net
+      - kafka-network
     environment:
       - KAFKA_BROKER=kafka:9092
 
