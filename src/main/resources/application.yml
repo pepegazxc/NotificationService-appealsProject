@@ -24,3 +24,8 @@ spring:
           auth: true
         starttls:
           enable: true
+
+mail:
+  main: ${MAIN_MAIL}
+app:
+  url: ${APP_URL}
