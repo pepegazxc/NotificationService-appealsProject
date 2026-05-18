@@ -3,8 +3,10 @@ package me.pepega.notificationservice.advice;
 import me.pepega.notificationservice.dto.response.ExceptionResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 
-public class FactoryException {
+@Component
+public class FactoryExceptionBuild {
     public ResponseEntity<ExceptionResponse> build(HttpStatus status, String message){
         return ResponseEntity
                 .status(status)

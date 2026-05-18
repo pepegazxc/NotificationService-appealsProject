@@ -15,7 +15,7 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 @RequiredArgsConstructor
 public class GlobalExceptionHandler {
 
-    private final FactoryException factory;
+    private final FactoryExceptionBuild factory;
 
     @ExceptionHandler(MailSendException.class)
     public ResponseEntity<ExceptionResponse> handeMailSend(MailSendException ex){
