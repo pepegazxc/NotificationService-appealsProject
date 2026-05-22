@@ -1,6 +1,6 @@
 spring:
   config:
-    import: optional:file:.env[.properties]
+    import: optional:file:.env
 
   kafka:
     bootstrap-servers: ${KAFKA_BROKER:localhost:9094}
@@ -10,7 +10,7 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
-        spring.json.trusted.packages:
+        spring.json.trusted.packages: "*"
         spring.json.use.type.headers: false
 
   mail:
@@ -29,3 +29,5 @@ mail:
   main: ${MAIN_MAIL}
 app:
   url: ${APP_URL}
+
+
