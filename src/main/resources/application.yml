@@ -1,6 +1,6 @@
 spring:
   config:
-    import: optional:file:.env
+    import: optional:file:.env[.properties]
 
   kafka:
     bootstrap-servers: ${KAFKA_BROKER:localhost:9094}
@@ -8,10 +8,13 @@ spring:
       group-id: notification-service
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
       properties:
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
         spring.json.trusted.packages: "*"
-        spring.json.use.type.headers: false
+        spring.json.use.type.headers: true
+        spring.json.type.mapping: >
+          main.event.RegistrationEvent:me.pepega.notificationservice.dto.consumer.RegistrationConsume
 
   mail:
     host: ${MAIL_HOST}
@@ -22,12 +25,15 @@ spring:
       mail:
         smtp:
           auth: true
-        starttls:
-          enable: true
+          starttls:
+            enable: true
+            required: true
 
 mail:
   main: ${MAIN_MAIL}
 app:
   url: ${APP_URL}
+
+kind: Application
 
 

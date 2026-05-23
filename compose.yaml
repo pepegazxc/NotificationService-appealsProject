@@ -1,5 +1,5 @@
 services:
-  notification-service:
+  kafka:
     build: .
     restart: always
     networks:
