@@ -14,7 +14,11 @@ spring:
         spring.json.trusted.packages: "*"
         spring.json.use.type.headers: true
         spring.json.type.mapping: >
-          main.event.RegistrationEvent:me.pepega.notificationservice.dto.consumer.RegistrationConsume
+          main.event.RegistrationEvent:me.pepega.notificationservice.dto.consumer.RegistrationConsume,
+          main.event.AdminRequestEvent:me.pepega.notificationservice.dto.consumer.AdminRequestConsume,
+          main.event.MayorRequestEvent:me.pepega.notificationservice.dto.consumer.MayorRequestConsume,
+          main.event.RequestResponseEvent:me.pepega.notificationservice.dto.consumer.RequestResultConsume,
+          main.event.LoginEvent:me.pepega.notificationservice.dto.consumer.LoggedConsume
 
   mail:
     host: ${MAIL_HOST}
