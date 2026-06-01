@@ -5,6 +5,7 @@ services:
     restart: always
     networks:
       - kafka-network
+      - app-network
     environment:
       - KAFKA_BROKER=kafka:9092
     env_file:
