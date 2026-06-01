@@ -39,7 +39,7 @@ spring:
 mail:
   main: ${MAIN_MAIL}
 app:
-  url: ${APP_URL}
+  url: ${APP_URL:${DOCKER_APP_URL}}
 
 kind: Application
 
