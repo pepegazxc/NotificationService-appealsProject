@@ -1,6 +1,7 @@
 services:
-  kafka:
+  notification-service:
     build: .
+    container_name: notification-service
     restart: always
     networks:
       - kafka-network
@@ -8,6 +9,8 @@ services:
       - KAFKA_BROKER=kafka:9092
     env_file:
       - .env
+    ports:
+      - "8085:8085"
 
 networks:
   kafka-network:
