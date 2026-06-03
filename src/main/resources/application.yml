@@ -21,7 +21,8 @@ spring:
           main.event.AdminRequestEvent:me.pepega.notificationservice.dto.consumer.AdminRequestConsume,
           main.event.MayorRequestEvent:me.pepega.notificationservice.dto.consumer.MayorRequestConsume,
           main.event.RequestResponseEvent:me.pepega.notificationservice.dto.consumer.RequestResultConsume,
-          main.event.LoginEvent:me.pepega.notificationservice.dto.consumer.LoggedConsume
+          main.event.LoginEvent:me.pepega.notificationservice.dto.consumer.LoggedConsume,
+          main.event.MayorEvent:me.pepega.notificationservice.dto.consumer.MayorMessageConsume
 
   mail:
     host: ${MAIL_HOST}
@@ -40,6 +41,8 @@ mail:
   main: ${MAIN_MAIL}
 app:
   url: ${APP_URL:${DOCKER_APP_URL}}
+  appeal:
+    url: ${APPEAL_URL:${APPEAL_DOCKER_URL}}
 
 kind: Application
 

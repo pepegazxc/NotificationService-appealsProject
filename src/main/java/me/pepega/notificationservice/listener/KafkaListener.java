@@ -17,6 +17,8 @@ public class KafkaListener {
     private String appUrl;
     @Value("${mail.main}")
     private String mainMail;
+    @Value("${app.appeal.url}")
+    private String appealAnswerLink;
 
     private final MailService mail;
 
@@ -76,6 +78,24 @@ public class KafkaListener {
                 "Successful login",
                 "Successful login was made. Time: " + consume.getTime()
         );
+    }
+
+    @org.springframework.kafka.annotation.KafkaListener(topics = "mayor-message", groupId = "notification-service")
+    public void mayorMessageListener(@Payload MayorMessageConsume consume){
+        log.info("Sending an appeal {} from user {} to mayors", consume.getAppealId(), consume.getUserIdentifier());
+        String link = appealAnswerLink + "/" + consume.getAppealId();
+
+        for (String email : consume.getMayorsEmails()){
+            mail.sendMail(
+                    email,
+                    "New appeal",
+                    "User " + consume.getUserIdentifier() + " has send an appeal. Please write an answer. \n" +
+                            "Appeal: " + consume.getAppeal() + "\n" +
+                            "User email: " + consume.getUserEmail() + "\n" +
+                            "Appeal id: " + consume.getAppealId() +
+                            "Link: " + link
+            );
+        }
     }
 
 }
