@@ -83,7 +83,7 @@ public class KafkaListener {
     @org.springframework.kafka.annotation.KafkaListener(topics = "mayor-message", groupId = "notification-service")
     public void mayorMessageListener(@Payload MayorMessageConsume consume){
         log.info("Sending an appeal {} from user {} to mayors", consume.getAppealId(), consume.getUserIdentifier());
-        String link = appealAnswerLink + "/" + consume.getAppealId();
+        String link = appealAnswerLink + "/" + consume.getAppealId() + "(Please for the '{appealId}' enter appeal real id";
 
         for (String email : consume.getMayorsEmails()){
             mail.sendMail(
