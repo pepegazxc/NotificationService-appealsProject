@@ -22,7 +22,8 @@ spring:
           main.event.MayorRequestEvent:me.pepega.notificationservice.dto.consumer.MayorRequestConsume,
           main.event.RequestResponseEvent:me.pepega.notificationservice.dto.consumer.RequestResultConsume,
           main.event.LoginEvent:me.pepega.notificationservice.dto.consumer.LoggedConsume,
-          main.event.MayorEvent:me.pepega.notificationservice.dto.consumer.MayorMessageConsume
+          main.event.MayorEvent:me.pepega.notificationservice.dto.consumer.MayorMessageConsume,
+          main.event.AppealResponseEvent:me.pepega.notificationservice.dto.consumer.AppealRequestConsume
 
   mail:
     host: ${MAIL_HOST}

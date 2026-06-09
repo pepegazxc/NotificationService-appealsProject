@@ -98,4 +98,15 @@ public class KafkaListener {
         }
     }
 
+    @org.springframework.kafka.annotation.KafkaListener(topics = "appeal-response", groupId = "notification-service")
+    public void appealResponseListener(@Payload AppealRequestConsume consume){
+        log.info("Sending response to user {}", consume.getUserEmail());
+        mail.sendMail(
+                consume.getUserEmail(),
+                "Response to the appeal",
+                "Status to your appeal: " + consume.getStatus().toString() + "\n" +
+                "Response: " + consume.getAppealResponse()
+        );
+    }
+
 }
